@@ -303,13 +303,13 @@
                 results.forEach(result => {
                     let number;
                     let mixedColorClass = result.colorResult === 'violet' && result.bigSmallResult === 'small' ? 'mixedColor0' : 'mixedColor5';
-                    let originClasses = `
-            <div data-v-481307ec="" class="GameRecord__C-origin-I ${number === 0 ? 'red' : 'green'}"></div>
-            <div data-v-481307ec="" class="GameRecord__C-origin-I ${result.colorResult}"></div>`;
-
+                    
                     if (result.colorResult === 'violet') {
                         // Handle case for violet color with different numbers
                         number = result.bigSmallResult === 'small' ? 0 : 5;
+                        let originClasses = `
+                             <div data-v-481307ec="" class="GameRecord__C-origin-I ${number === 0 ? 'red' : 'green'}"></div>
+                             <div data-v-481307ec="" class="GameRecord__C-origin-I ${result.colorResult}"></div>`;
 
                         resultsDiv.innerHTML += `
                 <div data-v-481307ec="" class="van-row">
