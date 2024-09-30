@@ -12,7 +12,7 @@
 
         window.onload = () => {
             // Establish WebSocket connection
-            ws = new WebSocket('ws://localhost:8080');
+            ws = new WebSocket('ws://localhost:8081');
 
             ws.onmessage = (event) => {
                 const data = JSON.parse(event.data);

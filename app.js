@@ -173,7 +173,7 @@ app.use("/login", loginRouter);
 app.use("/admin", adminRouter);
 
 // Start WebSocket server
-const wss = startWebSocketServer(8080);
+const wss = startWebSocketServer(8081);
 
 // Start the server-side timer
 startTimer(wss, saveCycleToDB);
