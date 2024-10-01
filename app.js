@@ -192,12 +192,12 @@ async function initializeCycle() {
         if (existingCycle) {
             await Cycle.deleteMany({});
         }
-        // Create the first cycle with the format YYYYMMDD01
+        // Create the first cycle with the format YYYYMMDD0001
         const now = new Date();
         const year = now.getFullYear().toString();
         const month = String(now.getMonth() + 1).padStart(2, '0');
         const day = String(now.getDate()).padStart(2, '0');
-        const initialCycleId = `${year}${month}${day}01`;
+        const initialCycleId = `${year}${month}${day}0001`;
         // Create and save the initial cycle
         const newCycle = new Cycle({
             cycleId: initialCycleId,

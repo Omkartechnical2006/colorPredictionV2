@@ -6,9 +6,9 @@ function startWebSocketServer(port) {
     wss.on('connection', (ws) => {
         console.log('Client connected');
         // Send the initial state to the newly connected client
-        ws.send(JSON.stringify({ timeLeft: 60, cycleCount: 1, cycleId: '00000000' }));
+        ws.send(JSON.stringify({ timeLeft: 60, cycleCount: 1, cycleId: '0000000000' }));
         // Optionally send initial data to the client
-        sendInitialResults(ws);//my remove
+        sendInitialResults(ws);
         ws.on('close', () => {
             console.log('Client disconnected');
         });
@@ -32,8 +32,10 @@ async function saveCycleToDB(cycleId) {
 // Function to send all created results to the newly connected client
 function sendInitialResults(ws) {
     WingoBetResult.find({})
-        .then(results => {
-            ws.send(JSON.stringify(results)); // Send all results to the client
+        .sort({ currCycleId: -1 }) // Sort by currCycleId in descending order
+        .limit(10) // Limit the results to 10
+        .then(recentResults => {
+            ws.send(JSON.stringify(recentResults)); // Send only recent 10 results to the client
         })
         .catch(err => {
             console.error("Error fetching results:", err);

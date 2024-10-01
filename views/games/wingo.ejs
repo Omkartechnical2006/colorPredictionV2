@@ -264,7 +264,7 @@
                 let choice = document.getElementById("choose-choice");
                 const overlayTimer = document.getElementById('overlayTimer');
 
-                if (timeLeft > 1 && timeLeft <= 5) {
+                if (timeLeft > 0 && timeLeft <= 5) {
                     choice.classList.add("disabled");
                     overlayTimer.innerText = timeLeft;
                     overlayTimer.style.display = 'block';
@@ -645,8 +645,6 @@
             <%-include("../partials/popup-choose.ejs")%>
                 <!-- end  -->
                 <script>
-                        const resultsDiv = document.getElementById('results');
-                        resultsDiv.innerHTML = '';
                         const bettingItems = document.querySelectorAll('.Betting__C-multiple-r');
 
                         bettingItems.forEach(item => {

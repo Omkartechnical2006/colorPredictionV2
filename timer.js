@@ -3,7 +3,7 @@ const WebSocket = require('ws'); // Add this line at the top
 let timeLeft = 60;      // Timer starts from 60 seconds
 let cycleCount = 1;     // Start cycle count from 1
 let currentDate = createDateId(); // Create initial date ID
-let currentCycleId = `${currentDate}${String(cycleCount).padStart(2, '0')}`; // Initialize cycle ID
+let currentCycleId = `${currentDate}${String(cycleCount).padStart(4, '0')}`; // Initialize cycle ID
 
 function createDateId() {
     const now = new Date();
@@ -42,9 +42,7 @@ function startTimer(wss, saveCycleToDB) {
                 cycleCount = 1; // Reset cycle count for a new day
             }
 
-            // Dynamically calculate padding based on the current cycle count
-            const paddingLength = Math.max(2, cycleCount.toString().length); // Ensure a minimum padding of 2 digits
-            currentCycleId = `${currentDate}${String(cycleCount).padStart(paddingLength, '0')}`;
+            currentCycleId = `${currentDate}${String(cycleCount).padStart(4, '0')}`;
 
             saveCycleToDB(currentCycleId); // Save the current cycle to MongoDB
 
